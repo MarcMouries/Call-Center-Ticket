@@ -4,10 +4,8 @@
 <head>
     <title>Call Center Tickets</title>
     <link type="text/css" href="./styles.css" media="all" rel="stylesheet" />
-    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" media="all" rel="stylesheet" />
-
-    
-
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" media="all"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -15,39 +13,45 @@
         <div class="header">
             <div class="logo-section">
                 <i class="fas fa-crown"></i>
-              </div>
+            </div>
             <h2>Call Center Tickets</h2>
         </div>
-        <table id="ticketTable">
-            <tr>
-                <th>
-                  Number
-                  <br>
-                  <input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number..">
-                </th>
-                <th>
-                  Email
-                  <br>
-                  <input type="text" id="emailFilter" onkeyup="filterTickets()" placeholder="Filter by email..">
-                </th>
-                <th>
-                  Phone
-                  <br>
-                  <input type="text" id="phoneFilter" onkeyup="filterTickets()" placeholder="Filter by phone..">
-                </th>
-                <th>
-                  Created On
-                  <br>
-                  <input type="text" id="dateFilter" onkeyup="filterTickets()" placeholder="Filter by date..">
-                </th>
-                <th>
-                  Status
-                  <br>
-                  <input type="text" id="statusFilter" onkeyup="filterTickets()" placeholder="Filter by status..">
-                </th>
-            </tr>
-            <!-- Table data will be filled here by JavaScript -->
-        </table>
+        <div class="table-container">
+            <table id="ticketTable">
+                <tr>
+                    <th>
+                        Number
+                        <br>
+                        <input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number..">
+                    </th>
+                    <th>
+                        Email
+                        <br>
+                        <input type="text" id="emailFilter" onkeyup="filterTickets()" placeholder="Filter by email..">
+                    </th>
+                    <th>
+                        Phone
+                        <br>
+                        <input type="text" id="phoneFilter" onkeyup="filterTickets()" placeholder="Filter by phone..">
+                    </th>
+                    <th>
+                        Created On
+                        <br>
+                        <select id="dateFilter" onchange="filterTickets()">
+                            <option value="all">All</option>
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                        </select>
+                    </th>
+                    <th>
+                        Status
+                        <br>
+                        <input type="text" id="statusFilter" onkeyup="filterTickets()" placeholder="Filter by status..">
+                    </th>
+                </tr>
+                <!-- Table data will be filled here by JavaScript -->
+            </table>
+        </div>
     </div>
     <script src="./ticket_data.js"></script>
     <script>
@@ -74,15 +78,29 @@
             var inputNumber = document.getElementById('numberFilter');
             var inputEmail = document.getElementById('emailFilter');
             var inputPhone = document.getElementById('phoneFilter');
-            var inputDate = document.getElementById('dateFilter');
+            var inputDate = document.getElementById('dateFilter').value;
             var inputStatus = document.getElementById('statusFilter');
-            
+
             var filterNumber = inputNumber.value.toUpperCase();
             var filterEmail = inputEmail.value.toUpperCase();
             var filterPhone = inputPhone.value.toUpperCase();
-            var filterDate = inputDate.value.toUpperCase();
             var filterStatus = inputStatus.value.toUpperCase();
-            
+
+            // Get current date and format it like "MM-DD-YYYY"
+            var currentDate = new Date();
+            var currentDay = ("0" + currentDate.getDate()).slice(-2);
+            var currentMonth = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+            var currentYear = currentDate.getFullYear();
+            var today = currentMonth + "-" + currentDay + "-" + currentYear;
+
+            // Get yesterday's date and format it like "MM-DD-YYYY"
+            var yesterdayDate = new Date(currentDate);
+            yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+            var yesterdayDay = ("0" + yesterdayDate.getDate()).slice(-2);
+            var yesterdayMonth = ("0" + (yesterdayDate.getMonth() + 1)).slice(-2);
+            var yesterdayYear = yesterdayDate.getFullYear();
+            var yesterday = yesterdayMonth + "-" + yesterdayDay + "-" + yesterdayYear;
+
             var tr = table.getElementsByTagName('tr');
 
             // Loop through all table rows, and hide those who don't match the search query
@@ -92,7 +110,7 @@
                 var tdPhone = tr[i].getElementsByTagName('td')[2];
                 var tdDate = tr[i].getElementsByTagName('td')[3];
                 var tdStatus = tr[i].getElementsByTagName('td')[4];
-                
+
                 if (tdNumber) {
                     var txtValueNumber = tdNumber.textContent || tdNumber.innerText;
                     var txtValueEmail = tdEmail.textContent || tdEmail.innerText;
@@ -104,7 +122,9 @@
                         txtValueNumber.toUpperCase().indexOf(filterNumber) > -1 &&
                         txtValueEmail.toUpperCase().indexOf(filterEmail) > -1 &&
                         txtValuePhone.toUpperCase().indexOf(filterPhone) > -1 &&
-                        txtValueDate.toUpperCase().indexOf(filterDate) > -1 &&
+                        ((inputDate === "today" && txtValueDate.startsWith(today)) ||
+                            (inputDate === "yesterday" && txtValueDate.startsWith(yesterday)) ||
+                            (inputDate === "all")) &&
                         txtValueStatus.toUpperCase().indexOf(filterStatus) > -1
                     ) {
                         tr[i].style.display = "";
