@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Call Center Tickets</title>
+    <link type="text/css" href="./styles.css" media="all" rel="stylesheet" />
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" media="all" rel="stylesheet" />
+
+    
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <i class="fas fa-crown"></i>
+              </div>
+            <h2>Call Center Tickets</h2>
+        </div>
+        <table id="ticketTable">
+            <tr>
+                <th>
+                  Number
+                  <br>
+                  <input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number..">
+                </th>
+                <th>
+                  Email
+                  <br>
+                  <input type="text" id="emailFilter" onkeyup="filterTickets()" placeholder="Filter by email..">
+                </th>
+                <th>
+                  Phone
+                  <br>
+                  <input type="text" id="phoneFilter" onkeyup="filterTickets()" placeholder="Filter by phone..">
+                </th>
+                <th>
+                  Created On
+                  <br>
+                  <input type="text" id="dateFilter" onkeyup="filterTickets()" placeholder="Filter by date..">
+                </th>
+                <th>
+                  Status
+                  <br>
+                  <input type="text" id="statusFilter" onkeyup="filterTickets()" placeholder="Filter by status..">
+                </th>
+            </tr>
+            <!-- Table data will be filled here by JavaScript -->
+        </table>
+    </div>
+    <script src="./ticket_data.js"></script>
+    <script>
+        // Load data from ticket_data.js
+        var table = document.getElementById('ticketTable');
+
+        for (var i = 0; i < ticket_data.length; i++) {
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            cell1.innerHTML = ticket_data[i].number;
+            cell2.innerHTML = ticket_data[i].email;
+            cell3.innerHTML = ticket_data[i].phone;
+            cell4.innerHTML = ticket_data[i].created_on;
+            cell5.innerHTML = ticket_data[i].status;
+        }
+
+        function filterTickets() {
+            // Declare variables 
+            var inputNumber = document.getElementById('numberFilter');
+            var inputEmail = document.getElementById('emailFilter');
+            var inputPhone = document.getElementById('phoneFilter');
+            var inputDate = document.getElementById('dateFilter');
+            var inputStatus = document.getElementById('statusFilter');
+            
+            var filterNumber = inputNumber.value.toUpperCase();
+            var filterEmail = inputEmail.value.toUpperCase();
+            var filterPhone = inputPhone.value.toUpperCase();
+            var filterDate = inputDate.value.toUpperCase();
+            var filterStatus = inputStatus.value.toUpperCase();
+            
+            var tr = table.getElementsByTagName('tr');
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (var i = 1; i < tr.length; i++) {
+                var tdNumber = tr[i].getElementsByTagName('td')[0];
+                var tdEmail = tr[i].getElementsByTagName('td')[1];
+                var tdPhone = tr[i].getElementsByTagName('td')[2];
+                var tdDate = tr[i].getElementsByTagName('td')[3];
+                var tdStatus = tr[i].getElementsByTagName('td')[4];
+                
+                if (tdNumber) {
+                    var txtValueNumber = tdNumber.textContent || tdNumber.innerText;
+                    var txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+                    var txtValuePhone = tdPhone.textContent || tdPhone.innerText;
+                    var txtValueDate = tdDate.textContent || tdDate.innerText;
+                    var txtValueStatus = tdStatus.textContent || tdStatus.innerText;
+
+                    if (
+                        txtValueNumber.toUpperCase().indexOf(filterNumber) > -1 &&
+                        txtValueEmail.toUpperCase().indexOf(filterEmail) > -1 &&
+                        txtValuePhone.toUpperCase().indexOf(filterPhone) > -1 &&
+                        txtValueDate.toUpperCase().indexOf(filterDate) > -1 &&
+                        txtValueStatus.toUpperCase().indexOf(filterStatus) > -1
+                    ) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
