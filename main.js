@@ -44,7 +44,13 @@ function filterTickets() {
             var txtValueNumber = tdNumber.textContent || tdNumber.innerText;
             var txtValueEmail = tdEmail.textContent || tdEmail.innerText;
             var txtValuePhone = tdPhone.textContent || tdPhone.innerText;
-            var txtValueDate = tdDate.textContent || tdDate.innerText;
+            //var txtValueDate = tdDate.textContent || tdDate.innerText;
+
+            var created_on = tdDate.textContent || tdDate.innerText;
+            var created_onParts = created_on.split(" ");
+            var txtValueDate = created_onParts[0];
+
+
             var txtValueStatus = tdStatus.textContent || tdStatus.innerText;
 
             if (
@@ -74,6 +80,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
+
+  // Set default values
+  document.getElementById("email").value = "Frank.Fisher@gmail.com";
+  document.getElementById("phone").value = "123-100-0666";
+  document.getElementById("status").value = "LG99";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -87,6 +98,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
 // SUBMIT FORM
 document.getElementById("newTicketForm").onsubmit = function(event) {
   event.preventDefault(); // Prevent the form from being submitted in the traditional way
@@ -130,11 +142,6 @@ document.getElementById("newTicketForm").onsubmit = function(event) {
 
   // Close the modal
   modal.style.display = "none";
-
-  // Set default values
-  document.getElementById("email").value = "Frank.Fisher@gmail.com";
-  document.getElementById("phone").value = "123-100-0666";
-  document.getElementById("status").value = "LG99";
 }
 
 // Display today's date
@@ -142,4 +149,3 @@ var today = new Date();
 var options = { year: 'numeric', month: 'long', day: 'numeric' };
 today = today.toLocaleDateString('en-US', options);
 document.getElementById("today_date").innerHTML = today;
-
