@@ -4,6 +4,8 @@ html {
     font-family: "Poppins", sans-serif;
   }
 
+  /* {    border: 1px solid red;  }*/
+
 .container {
     _box-shadow: 0 0 25px rgb(0 0 0 / 20%);
     background: #ffffff;
@@ -14,7 +16,7 @@ html {
 .header {
     width: 100%;
     display: grid;
-    grid-template-columns: 100px minmax(640px, 1fr) 300px;
+    grid-template-columns: 100px 300px minmax(640px, 1fr) 300px;
     grid-gap: 20px;
     align-items: center;
     color: #091029;
@@ -36,11 +38,41 @@ html {
     _box-shadow: 0px 0px 0px 15px #ecedf6;
   }
 
+.header .search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+.header .search-section .search-box .fa-search {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 20px;
+    color: #dde0ed;
+}
+.header .search-section .search-box {
+    position: relative;
+}
+.header .search-section .search-box .input-box {
+    outline: none;
+    width: 450px;
+    height: 40px;
+    border: 1px solid #dde0ed;
+    border-radius: 10px;
+    padding: 10px;
+    color: #131340;
+    font-weight: 500;
+}
+
 .table-container {
     padding: 20px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
+    
     background: #f6f6fa;
     border-bottom: 1px solid #ecedf6;
     border-radius: 5px;
@@ -112,5 +144,19 @@ input[type=text], select {
 .close:focus {
     color: #000;
     text-decoration: none;
+    cursor: pointer;
+}
+
+
+#openModalButton {
+    background-color: transparent;
+    border: 2px solid #008CBA;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
 }
