@@ -87,14 +87,10 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-// When the user submits the form in the modal
-// Your previous JavaScript code
-
-// When the user submits the form in the modal
+// SUBMIT FORM
 document.getElementById("newTicketForm").onsubmit = function(event) {
   event.preventDefault(); // Prevent the form from being submitted in the traditional way
 
-  // Get the last ticket number in the ticket_data
   var lastTicket = ticket_data[ticket_data.length - 1].number;
 
   // Remove non-numeric characters and increment the numeric part by one for the new record
@@ -135,8 +131,15 @@ document.getElementById("newTicketForm").onsubmit = function(event) {
   // Close the modal
   modal.style.display = "none";
 
-  // Clear the form fields in the modal
-  document.getElementById("email").value = "default@example.com";
-  document.getElementById("phone").value = "1234567890";
-  document.getElementById("status").value = "Open";
+  // Set default values
+  document.getElementById("email").value = "Frank.Fisher@gmail.com";
+  document.getElementById("phone").value = "123-100-0666";
+  document.getElementById("status").value = "LG99";
 }
+
+// Display today's date
+var today = new Date();
+var options = { year: 'numeric', month: 'long', day: 'numeric' };
+today = today.toLocaleDateString('en-US', options);
+document.getElementById("today_date").innerHTML = today;
+
