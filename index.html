@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Call Center Tickets</title>
-<link type="text/css" href="./styles.css" media="all" rel="stylesheet" />
-<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" media="all" rel="stylesheet" />
+  <title>Call Center Tickets</title>
+  <link type="text/css" href="./styles.css" media="all" rel="stylesheet" />
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" media="all"
+    rel="stylesheet" />
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
     <div class="header">
-        <div class="logo-section">
-            <i class="fas fa-crown"></i>
-            </div>
-        <h2>Call Center Tickets</h2>
-        <button id="openModalButton">New</button>
+      <div class="logo-section">
+        <i class="fas fa-crown"></i>
+      </div>
+      <h2>Call Center Tickets</h2>
+      <div class="search-section">
+        <div class="search-box">
+          <input type="text" class="input-box">
+          <i class="fas fa-search"></i>
+        </div>
+        <span id="today_date" class="date">06 May 2020</span>
+      </div>
     </div>
     <div class="table-container">
-    <table id="ticketTable">
+      <button id="openModalButton" class="fas fa-plus-circle">New</button>
+      <table id="ticketTable">
         <tr>
-            <th>Number<br><input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number.."></th>
-            <th>Email<br><input type="text" id="emailFilter" onkeyup="filterTickets()" placeholder="Filter by email.."></th>
-            <th>Phone<br><input type="text" id="phoneFilter" onkeyup="filterTickets()" placeholder="Filter by phone.."></th>
-            <th>Created On<br><input type="date" id="dateFilter" onchange="filterTickets()" placeholder="Filter by date.."></th>
-            <th>Status<br><input type="text" id="statusFilter" onkeyup="filterTickets()" placeholder="Filter by status.."></th>
+          <th>Number<br><input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number..">
+          </th>
+          <th>Email<br><input type="text" id="emailFilter" onkeyup="filterTickets()" placeholder="Filter by email..">
+          </th>
+          <th>Phone<br><input type="text" id="phoneFilter" onkeyup="filterTickets()" placeholder="Filter by phone..">
+          </th>
+          <th>Created On<br><input type="date" id="dateFilter" onchange="filterTickets()"
+              placeholder="Filter by date.."></th>
+          <th>Status<br><input type="text" id="statusFilter" onkeyup="filterTickets()" placeholder="Filter by status..">
+          </th>
         </tr>
-    </table>
-</div>
+      </table>
+    </div>
 
-<!-- The Modal -->
-<div id="ticketModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>New Ticket</h2>
-    <form id="newTicketForm">
-      <label for="email">Email:</label><br>
-      <input type="text" id="email" name="email" value="default@example.com"><br>
-      <label for="phone">Phone:</label><br>
-      <input type="text" id="phone" name="phone" value="1234567890"><br>
-      <label for="status">Status:</label><br>
-      <input type="text" id="status" name="status" value="Open"><br>
-      <input type="submit" value="Submit" style="background-color: blue; color: white; padding: 10px 20px; border: none;">
-    </form>
+    <!-- The Modal -->
+    <div id="ticketModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>New Ticket</h2>
+        <form id="newTicketForm">
+          <label for="email">Email:</label><br>
+          <input type="text" id="email" name="email" value="default@example.com"><br>
+          <label for="phone">Phone:</label><br>
+          <input type="text" id="phone" name="phone" value="1234567890"><br>
+          <label for="status">Status:</label><br>
+          <input type="text" id="status" name="status" value="Open"><br>
+          <input type="submit" value="Submit"
+            style="background-color: blue; color: white; padding: 10px 20px; border: none;">
+        </form>
+      </div>
+    </div>
+
   </div>
-</div>
-
-</div>
-<script src="./ticket_data.js"></script>
-<script src="./main.js"></script>
+  <script src="./ticket_data.js"></script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
