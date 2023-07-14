@@ -24,7 +24,9 @@
       </div>
     </div>
     <div class="table-container">
-      <button id="openModalButton" class="fas fa-plus-circle">New</button>
+      <div class="table-header">
+        <button id="openModalButton" class="button"><i class="fas fa-plus-circle"></i> New</button>
+      </div>
       <table id="ticketTable">
         <tr>
           <th>Number<br><input type="text" id="numberFilter" onkeyup="filterTickets()" placeholder="Filter by number..">
@@ -53,8 +55,7 @@
           <input type="text" id="phone" name="phone" value="1234567890"><br>
           <label for="status">Status:</label><br>
           <input type="text" id="status" name="status" value="Open"><br>
-          <input type="submit" value="Submit"
-            style="background-color: blue; color: white; padding: 10px 20px; border: none;">
+          <input type="submit" value="Submit" class="button">
         </form>
       </div>
     </div>
