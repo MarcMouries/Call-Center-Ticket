@@ -78,8 +78,12 @@ html {
     border-radius: 5px;
 }  
 
-.table-header {
- height: 50px;    
+.table-actions {
+ _height: 50px;    
+ display: flex;
+ justify-content: flex-end;
+ margin-bottom: 20px;
+ width: 100%;
 }
 
 
@@ -152,7 +156,6 @@ input[type=text], select {
 }
 
 .button {
-    background-color: rgb(79, 82, 189);
     border-color: transparent;
     color: white;
     border-radius: 5px;
@@ -167,4 +170,31 @@ input[type=text], select {
     margin: 4px 2px;
     cursor: pointer;
 }
-
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    max-width: 100px;
+}
+  
+  .button.secondary {
+    background-color: lightgray;
+    color: black;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .button.primary {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+  }
+  
