@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="table-container">
-      <div class="table-header">
-        <button id="openModalButton" class="button"><i class="fas fa-plus-circle"></i> New</button>
+      <div class="table-actions">
+        <button id="openModalButton" class="button primary"><i class="fas fa-plus-circle"></i> New</button>
       </div>
       <table id="ticketTable">
         <tr>
@@ -55,14 +55,20 @@
           <input type="text" id="phone" name="phone" value="1234567890"><br>
           <label for="status">Status:</label><br>
           <input type="text" id="status" name="status" value="Open"><br>
-          <input type="submit" value="Submit" class="button">
+          <div class="modal-actions">
+            <button type="button" class="button secondary" id="cancelButton">Cancel</button>
+            <input type="submit" value="Submit" class="button primary">
+          </div>
         </form>
       </div>
     </div>
 
   </div>
   <script src="./ticket_data.js"></script>
-  <script src="./main.js"></script>
+  <script src="./js/init.js"></script>
+  <script src="./js/dateUtil.js"></script>
+  <script src="./js/dataLoader.js"></script>
+  <script src="./js/uiHandler.js"></script>
 </body>
 
 </html>
