@@ -145,39 +145,8 @@ input[type=text], select {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    border-radius: 5px;  /* Applies the same border radius to the modal content */
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.button {
-    border-color: transparent;
-    color: white;
+    width: 50%;
     border-radius: 5px;
-    padding: 6px 16px 6px 16px;
-    
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 700;
-
-    margin: 4px 2px;
-    cursor: pointer;
 }
 .modal-actions {
     display: flex;
@@ -185,25 +154,50 @@ input[type=text], select {
     margin-top: 20px;
   }
   
+  /* BUTTONS */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
   .button {
-    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
     font-weight: bold;
+    margin: 4px 2px;
     cursor: pointer;
     max-width: 100px;
-}
+    transition: opacity 0.3s, box-shadow 0.3s;
+  }
   
   .button.secondary {
     background-color: lightgray;
     color: black;
-    border: none;
     margin-right: 10px;
   }
   
   .button.primary {
     background-color: dodgerblue;
     color: white;
-    border: none;
   }
+  
+  .button:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
   
