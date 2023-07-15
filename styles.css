@@ -16,7 +16,7 @@ html {
 .header {
     width: 100%;
     display: grid;
-    grid-template-columns: 100px 300px minmax(640px, 1fr) 300px;
+    grid-template-columns: 50px 300px 1fr;
     grid-gap: 20px;
     align-items: center;
     color: #091029;
@@ -65,6 +65,11 @@ html {
     color: #131340;
     font-weight: 500;
 }
+.header .search-section .date {
+    color: #9391ad;
+    font-size: 14px;
+    font-weight: 400;
+}
 
 .table-container {
     padding: 20px;
@@ -79,13 +84,17 @@ html {
 }  
 
 .table-actions {
- _height: 50px;    
- display: flex;
- justify-content: flex-end;
- margin-bottom: 20px;
- width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
 }
-
+.table-actions .title {
+    color: #131340;
+    font-weight: 600;
+    font-size: 22px;
+}
 
 table {
     width: 100%;
