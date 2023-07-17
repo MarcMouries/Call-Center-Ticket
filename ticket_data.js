@@ -46,6 +46,6 @@ var ticket_data = [
         email: "Tracey.Taylor@example.com",
         phone: "123-100-1020",
         created_on: "2023-07-14 09:03:48 AM",
-        status: "LG99"
+        status: "LG01"
     },
 ];

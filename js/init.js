@@ -19,7 +19,7 @@ console.log("init USER = " + user);
   // The default new ticket: used to set the values in the modal and insert if the page is not used by the CSR (by the bot)
 var newTicket = {
     number: 'CCT0001008',
-    email: "Frank.Fisher@gmail.com'",
+    email: "Frank.Fisher@gmail.com",
     phone: '123-100-0666',
     created_on: today,
     status: 'LG99'
